@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import axios from 'axios'; // Commented for now
+import axios from 'axios'; // Commented for now
 
 const Plants = () => {
   const [plants, setPlants] = useState([]);
@@ -8,31 +8,33 @@ const Plants = () => {
   const fetchPlants = async () => {
     try {
       // Uncomment and use API later
-      // const res = await axios.get('/api/plants/myplants');
-      // setPlants(res.data.plants);
+      const res = await axios.get('http://localhost:5000/api/plants',{withCredentials: true});
+      setPlants(res.data);
 
       // Hardcoded data for now
-      const dummyPlants = [
-        {
-          _id: '1',
-          name: 'Tomato',
-          disease: 'Leaf Spot',
-          cure: 'Remove infected leaves. Apply organic fungicide.'
-        },
-        {
-          _id: '2',
-          name: 'Rose',
-          disease: 'Powdery Mildew',
-          cure: 'Use neem oil spray weekly.'
-        },
-        {
-          _id: '3',
-          name: 'Mango',
-          disease: 'Anthracnose',
-          cure: 'Apply copper-based fungicide.'
-        },
-      ];
-      setPlants(dummyPlants);
+      // const dummyPlants = [
+      //   {
+      //     _id: '1',
+      //     name: 'Tomato',
+      //     disease: 'Leaf Spot',
+      //     cure: 'Remove infected leaves. Apply organic fungicide.'
+      //   },
+      //   {
+      //     _id: '2',
+      //     name: 'Rose',
+      //     disease: 'Powdery Mildew',
+      //     cure: 'Use neem oil spray weekly.'
+      //   },
+      //   {
+      //     _id: '3',
+      //     name: 'Mango',
+      //     disease: 'Anthracnose',
+      //     cure: 'Apply copper-based fungicide.'
+      //   },
+      // ];
+      // setPlants(dummyPlants);
+
+  
 
     } catch (error) {
       console.error('Error fetching plants:', error);

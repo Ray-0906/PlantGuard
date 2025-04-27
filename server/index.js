@@ -31,7 +31,7 @@ app.get('/',isAuthenticated ,(req, res) => {
   res.send('Welcome to the Plant API!');
 })
 // Connect DB and start server
-mongoose.connect('mongodb://127.0.0.1:27017/plant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://astra3716:eJytU76K5b1jdZLs@cluster0.qelj8gx.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     app.listen(5000, () => console.log('Server running on http://localhost:5000'));
   })

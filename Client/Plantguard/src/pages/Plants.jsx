@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import axios from 'axios'; // Commented for now
+ import axios from 'axios'; // Commented for now
 
 const Plants = () => {
   const [plants, setPlants] = useState([]);
@@ -7,9 +7,9 @@ const Plants = () => {
 
   const fetchPlants = async () => {
     try {
-      // Uncomment and use API later
-      // const res = await axios.get('/api/plants/myplants');
-      // setPlants(res.data.plants);
+      // Uncomment when backend is ready
+      const res = await axios.get('http://localhost:5000/api/plants', { withCredentials: true });
+      setPlants(res.data);
 
       // Hardcoded data for now
       const dummyPlants = [
@@ -32,7 +32,7 @@ const Plants = () => {
           cure: 'Apply copper-based fungicide.'
         },
       ];
-      setPlants(dummyPlants);
+      // setPlants(dummyPlants);
 
     } catch (error) {
       console.error('Error fetching plants:', error);

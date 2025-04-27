@@ -56,3 +56,21 @@ exports.deletePlant = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+
+// detect disease
+exports.detectPlantDisease = async (req, res) => {
+  try {
+    const imagePath = req.file.path;
+
+    // 🔥 Run your ML model
+    const result = await runMLModel2(imagePath);
+
+    console.log("Model result:", result);
+    // ✅ Send JSON response
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error in detectPlantDisease controller:", error);
+    res.status(500).json({ error: "Failed to detect plant disease" });
+  }
+};

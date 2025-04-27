@@ -6,12 +6,13 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate= useNavigate();
   const handleSignup = async (e) => {
-   const navigate= useNavigate();
+   
     e.preventDefault();
     try {
       // Uncomment when backend is ready
+      console.log('Signup submitted', { name, email, password });
      const user= await axios.post('http://localhost:5000/api/auth/signup', { name, email, password }, { withCredentials: true });
       console.log('Signup submitted', { name, email, password });
       localStorage.setItem('user', JSON.stringify(user.data.user)); // Store user data as string
